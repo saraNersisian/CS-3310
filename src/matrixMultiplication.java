@@ -18,16 +18,78 @@ public class matrixMultiplication {
 
 		// generate two random n x n matrices A and B
 		int[][] A, B;
-		int n; // size of the matix 
+		int n; // size of the matrix 
 		int numberOfTimes = 15;
 		
 		// times to record
 		long start;
 		long end;
 		
+		
 		long ClassicalTime = 0;
 		long DevideAndConquerTime = 0;
 		long StrassenTime = 0;
+		
+//THIS PART IS FOR TESTING THE GIVEN MATRIX
+		long startTEST;
+		long endTEST;
+		
+		long ClassicalTimeTEST = 0;
+		long DevideAndConquerTimeTEST = 0;
+		long StrassenTimeTEST = 0;
+		
+		
+		int[][] ClassicResultTEST = new int[4][4];
+		int[][] DCResultTEST = new int[4][4];
+		int[][] StrassenResultTEST = new int[4][4];
+		
+		//sanity check using provided matrix 
+		int[][] X = {{2, 0 , -1, 6},
+					{3, 7, 8, 0},
+					{-5, 1, 6, -2},
+					{8, 0, 2, 7}};
+		
+		int[][] Y = {{0, 1 , 6, 3},
+					{-2, 8, 7, 1},
+					{2, 0, -1, 0},
+					{9, 1, 6, -2}};
+		
+//		ClassicResultTEST = classicalMulti(X, Y, 4);
+//		DCResultTEST = DivideAndConquerMult(X, Y, 4);
+//		StrassenResultTEST = StrassenMult(X, Y, 4);
+		
+		System.out.println("\n\nclassical: ");
+		startTEST = System.nanoTime();
+		ClassicResultTEST = classicalMulti(X, Y, 4);
+		endTEST = System.nanoTime();
+		ClassicalTimeTEST += endTEST - startTEST;
+		displayMatrix(ClassicResultTEST,4);
+		
+		System.out.println("DC: ");
+		startTEST = System.nanoTime();
+		DCResultTEST = DivideAndConquerMult(X, Y, 4);
+		endTEST = System.nanoTime();
+		DevideAndConquerTimeTEST += endTEST - startTEST;
+		displayMatrix(DCResultTEST,4);
+		
+		System.out.println("Strassen: ");
+		startTEST = System.nanoTime();
+		StrassenResultTEST = StrassenMult(X, Y, 4);
+		endTEST = System.nanoTime();
+		StrassenTimeTEST += endTEST - startTEST;
+		displayMatrix(StrassenResultTEST,4);
+		
+		
+		System.out.println("\n\n  Classic matrix multiplication time = " + ClassicalTimeTEST + " ns\n");
+		System.out.println("  Divide and Conquer matrix multiplication time = " + DevideAndConquerTimeTEST + " ns\n");
+		System.out.println("  Strassen matrix multiplication time = " + StrassenTimeTEST + " ns\n");
+		
+		System.out.println("\n\n ============== TEST ENDED ================== ");
+		
+		System.out.println(" \n\n\n\n\n\n ============== STARTING INCREMENTING SIZE WITH RANDOM ELEMENTS ================== \n");
+		
+		
+//END OF TEST PART
 		
 		
 		
